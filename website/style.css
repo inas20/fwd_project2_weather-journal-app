@@ -1,111 +1,211 @@
-body{
-    background: #fffff8;
+body {
+    font-size: 16px;
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    padding: 0;
+    margin: 0;
+    color: #333333;
+    background-color: #141414;
 }
 
-#app{
+.wrapper {
+    height: 100vh;
     display: grid;
-    grid-auto-rows: minmax(150px, auto);
-    /* grid-template-columns:  */
-    height:100vh;
-    background: #f23557;
-    color: #f0d43a;
+    grid-template-columns: 100%;
+    padding: 3em;
     justify-content: center;
     grid-gap: 1em;
-    font-size: 20px;
     font-family: 'Oswald', sans-serif;
 }
 
-.holder{
-
+.headline {
+    font-size: 3em;
+    margin : 15px;
+    color :  #f54c92;
 }
 
-.entry{
-    background: rgba(59, 74, 107, .4);
+.subtitle {
+    font-size: 2em;
+    margin-left: 10px;
+}
+
+.subtitle-secondary {
+    font-size: 1.75em;
+    margin-left: 10px;
+}
+
+.input-group {
+    margin-bottom: 2em;
+}
+
+.input-item {
+    width: 100%;
+    padding-top: 0.75em;
+    font-size: 1.5em;
+    font-family: 'Oswald', sans-serif;
+    background: transparent;
+    outline: none !important;
+    border: none;
+    border-radius: 0 !important;
+    -webkit-appearance: none;
+    border-bottom: 1px solid #979797;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    font-weight: 400;
+    color: #575757;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-capitalize {
+    text-transform: capitalize;
+}
+
+
+.button-holder{
+
+    margin-left: 22vh;
+}
+
+.title{
+    color: rgb(238, 155, 220);
+    font-size: 2em;
+    margin: 22px;
+}
+
+#generate {
+    font-size: 1.5em;
+    background: #f54c92;
+    font-family: 'Owsald', sans-serif;
+    color: #FFF;
+    padding: 0.5em 1.25em;
+    margin: 25px;
+    cursor: pointer;
+    border-radius: 10px;
 }
 
 #entryHolder{
-
+    color: #FFF;
+    margin: 15px;
+    font-size: medium;
 }
 
-#date{
-
+.info{
+    margin-bottom: 10px;
+    margin-top: 1px;
+    margin-left: 2em;
 }
 
-#temp{
 
+/* Footer Styles */
+.page__footer {
+    /* background: rgb(114, 112, 112); */
+    padding: 3em;
+    color: #fff;
 }
 
-#content{
-
+#feedback {
+    padding: 1em;
+    border-radius: 0.25em;
+    transition: all 0.5 ease-in-out;
 }
 
-.headline {
-
+.error-show {
+    margin-top: 12px;
+    display: block;
+    margin-left: 35px;
+    color: #F00;
 }
-.title{
 
+span {
+    margin-top: 12px;
+    display: none;
+    margin-left: 35px;
+    color: #F00;
 }
+
+.success {
+    border: 1px solid #018601;
+    color: #018601;
+}
+
 
 /*  Basic Styling To Override Default For Basic HTML Elements */
 label{
     display:block;
     font-size: 27px;
+    margin: 20px;
+    color: #FFF;
 }
 
 input{
-    display:block;
-    height: 60px;
-    width: 320px;
-    background:#22b2da;
-    color: #f0d43a;
-    font-size: 20px;
-    font-family: 'Oswald', sans-serif;
-    border: none;
-}
-
-button{
-    width: 400px;
-    height: 100px;
-    background: #3b4a6b;
-    color: #f0d43a;
-    font-size: 26px;
-    font-family: 'Oswald', sans-serif;
-    border: none;
-    box-shadow: 2px 4px 5px #444;
-}
-h1{
-    font-size: 36px;
+    margin-left: 35px;
+    padding-left: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
 
 textarea{
-    background:#22b2da;
-    color: #f0d43a;
     font-size: 20px;
     font-family: 'Oswald', sans-serif;
+    margin-left: 35px;
+    padding-left: 15px;
+    padding-top: 15px;
 }
-/* Reset style for HTML element on active to have no border*/
-input:focus,
-select:focus,
-textarea:focus,
-button:focus {
-    outline: none;
+
+.entry-group {
+    display: flex;
+    flex-wrap: wrap;
+    color: #0000d3;
+    margin-left: 15px;
 }
+
+.entry-item {
+    padding: 0.25em 0.5em;
+    font-size: 1.75rem;
+    font-weight: 400;
+    margin-left: 2em;
+}
+
+
 /* Style for Placeholder Text*/
 ::placeholder { /* Firefox, Chrome, Opera */ 
-    color: #f0d43a; 
+    color: #b1b1b1; 
     font-family: 'Oswald', sans-serif;
 
 } 
   
 :-ms-input-placeholder { /* Internet Explorer 10-11 */ 
-    color: #f0d43a; 
+    color: #b1b1b1;  
     font-family: 'Oswald', sans-serif;
 
 } 
   
 ::-ms-input-placeholder { /* Microsoft Edge */ 
-    color: #f0d43a; 
+    color: #b1b1b1; 
     font-family: 'Oswald', sans-serif;
 
 } 
+
+
+/* Apply to large devices */
+@media (min-width: 767px) {
+    .wrapper {
+        padding: 2em calc((100vw - 700px)/2);
+    }
+}
+
+/* Reduce the lateral padding on small viewports */
+@media (max-width: 420px){
+    .wrapper{
+        padding: 2em 0.5em
+    }
+
+    .headline {
+        font-size: 2.5em;
+    }
+}
