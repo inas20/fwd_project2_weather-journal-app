@@ -12,11 +12,13 @@ let newDate = (d.getMonth()+1) +'/'+ d.getDate() +'/'+ d.getFullYear();
 let generateBtn = '';
 let zipValue = '';
 let feelingsValue = '';
+let span = {}
 
 // to check the dom is ready
 document.addEventListener('DOMContentLoaded', function () {
     generateBtn = document.getElementById('generate');    
     generateBtn.addEventListener('click', onSubmit);
+    span = document.querySelector('span');
 })
 
 // callback function onClick generate button
@@ -27,12 +29,15 @@ function onSubmit(){
         console.log(result)
         if(!!result && result.cod == '404'){
             alert('Please enter valid zip code')
+            span.style.display ='block'
+            span.innerHTML = result.message
         }else{
             displayUserData('/postUserData',{
                 date: newDate,
-                temp: result?.main?.temp,
+                temp: parseInt((result?.main?.temp)-273.15),
                 content:  feelingsValue
             })
+            span.style.display ='none'
             updateUI().then();
         }
        
@@ -87,7 +92,7 @@ const updateUI = async()=>{
        const data =  await request.json();
         if(data){
             document.getElementById('date').innerHTML= "Date  : " + data.date ;
-            document.getElementById('temp').innerHTML= "Temperature  : " + data.temp;
+            document.getElementById('temp').innerHTML= "Temperature  : " + data.temp + '°C';
             document.getElementById('content').innerHTML= 'Your Feelings : ' + data.content;
         }
     }catch(error){

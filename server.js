@@ -13,6 +13,7 @@ const port = 5501;
 // Initialize the main project folder
 app.use(express.static('website'));
 
+
 /* Middleware*/
 //Here we are configuring express to use body-parser as middle-ware.
 app.use(cors());
@@ -28,10 +29,10 @@ app.get('/all', (req, res) => {
 })
 
 
-// callback function when posting
+// callback function when postingC
 const displayUserData =(req,res)=>{
   let newData = {
-    date: req.body.date,
+    date: req.body.date,       
     temp: req.body.temp,
     content: req.body.content
   }
