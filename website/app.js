@@ -19,6 +19,13 @@ document.addEventListener('DOMContentLoaded', function () {
     generateBtn = document.getElementById('generate');    
     generateBtn.addEventListener('click', onSubmit);
     span = document.querySelector('span');
+    let input = document.getElementById('zip');
+    input.addEventListener("keyup", function(event) {
+    if (event.key === 'Enter' && input.value.length >0) {
+        event.preventDefault();
+        onSubmit()
+    }
+    })
 })
 
 // callback function onClick generate button
