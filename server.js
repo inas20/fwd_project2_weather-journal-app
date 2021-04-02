@@ -34,7 +34,8 @@ const displayUserData =(req,res)=>{
   let newData = {
     date: req.body.date,       
     temp: req.body.temp,
-    content: req.body.content
+    content: req.body.content,
+    country: req.body.country
   }
   projectData = {...newData};
   console.log('Posting coming data=======', newData)

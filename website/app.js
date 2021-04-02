@@ -11,6 +11,7 @@ let newDate = (d.getMonth()+1) +'/'+ d.getDate() +'/'+ d.getFullYear();
 
 let generateBtn = '';
 let zipValue = '';
+let countryValue = '';
 let feelingsValue = '';
 let span = {}
 
@@ -32,6 +33,7 @@ document.addEventListener('DOMContentLoaded', function () {
 function onSubmit(){
     zipValue = document.getElementById('zip').value;
     feelingsValue = document.getElementById('feelings').value;
+    countryValue = document.getElementById('co').value
     getTemperature(zipValue, feelingsValue).then((result)=>{
         console.log(result)
         if(!!result && result.cod == '404'){
@@ -42,7 +44,8 @@ function onSubmit(){
             displayUserData('/postUserData',{
                 date: newDate,
                 temp: parseInt((result?.main?.temp)-273.15),
-                content:  feelingsValue
+                content:  feelingsValue,
+                country: result?.name + ','+ result?.sys?.country
             })
             span.style.display ='none'
             updateUI().then();
@@ -56,7 +59,7 @@ function onSubmit(){
 
 //make a GET request to the OpenWeatherMap API.
 const getTemperature = async()=>{
-    const baseURL = `${url}${zipValue}&apikey=${apiKey}`;
+    const baseURL = `${url}${zipValue},${countryValue}&apikey=${apiKey}`;
     let errorMsg =  document.getElementsByTagName('span')[0]
     if(!!zipValue){
         errorMsg.style.display = 'none'
@@ -99,8 +102,10 @@ const updateUI = async()=>{
        const data =  await request.json();
         if(data){
             document.getElementById('date').innerHTML= "Date  : " + data.date ;
+            document.getElementById('country').innerHTML= 'Zone Area : ' + data.country;
             document.getElementById('temp').innerHTML= "Temperature  : " + data.temp + '°C';
             document.getElementById('content').innerHTML= 'Your Feelings : ' + data.content;
+           
         }
     }catch(error){
         console.log('Error in updating UI ', error)
